@@ -54,3 +54,10 @@ func TestSpeedNorwegianBlueParrot_not_nailed_high_voltage(t *testing.T) {
 	assert.Equal(t, 24.0, speed)
 	assert.NoError(t, err)
 }
+
+func TestUnknownParrotThrowsAnError(t *testing.T) {
+	parrot := CreateParrot(4, 0, 4, false)
+	speed, err := parrot.Speed()
+	assert.Equal(t, 0.0, speed)
+	assert.Error(t, err)
+}
